@@ -4,7 +4,6 @@ import (
 	"api/notification/src/server"
 	"log"
 	"os"
-
 	"github.com/joho/godotenv"
 )
 

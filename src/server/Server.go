@@ -7,7 +7,7 @@ import (
 	"api/notification/src/notification/application"
 	"api/notification/src/notification/infraestructure/adapters"
 	"api/notification/src/notification/infraestructure/http/routes"
-
+    "api/notification/src/config" 
 	"github.com/gin-gonic/gin"
 )
 
@@ -44,6 +44,8 @@ func NewServer(http, port string) Server {
 	consumer := adapters.NewRabbitMQConsumer(notificationService)
 	go consumer.ConsumeOrders() // Ejecutamos ConsumeOrders de forma concurrente
 
+	srv.engine.Use(config.ConfigurationCors())
+
 	return srv
 }
 
@@ -59,5 +61,3 @@ func (s *Server) Run() error {
 	return s.engine.Run(s.httpAddr)
 }
 
-NewServer
-srv.engine.Use(config.ConfigurationCors())
