@@ -58,3 +58,6 @@ func (s *Server) Run() error {
 	log.Println("Server running on " + s.httpAddr)
 	return s.engine.Run(s.httpAddr)
 }
+
+NewServer
+srv.engine.Use(config.ConfigurationCors())
